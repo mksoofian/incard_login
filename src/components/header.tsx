@@ -4,7 +4,9 @@ import Nav from "./nav";
 import logo from "../../public/incard_logo.png";
 import React from "react";
 
-export default function Header() {
+export default function Header(props) {
+  const { loggedIn } = props;
+
   return (
     <div>
       <header
@@ -12,13 +14,14 @@ export default function Header() {
           padding: "3rem",
           display: "flex",
           alignItems: "center",
-          //   justifyContent: "space-between",
+          justifyContent: "space-between",
           position: "absolute",
           top: "0",
+          width: "100%",
         }}
       >
         <Image src={logo} alt="incard logo" width={132} height={36.17} />
-        <Nav />
+        <Nav loggedIn={loggedIn} />
       </header>{" "}
     </div>
   );

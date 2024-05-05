@@ -4,8 +4,8 @@ import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
+  //NextJs Docs Code
   const router = useRouter();
-
   async function handleSubmit(event) {
     event.preventDefault();
 

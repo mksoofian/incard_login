@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
 
-export default function Nav() {
+export default function Nav(props) {
+  const { loggedIn } = props;
+  console.log(loggedIn);
   const navLinks = [
     {
       name: "FAQ",
@@ -14,7 +16,7 @@ export default function Nav() {
       icon: null,
     },
     {
-      name: "Sign in",
+      name: loggedIn ? "" : "Sign in",
       href: "/login",
       icon: null,
     },

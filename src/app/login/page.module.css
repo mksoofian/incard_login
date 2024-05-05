@@ -1,0 +1,11 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.formInputsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
