@@ -5,6 +5,7 @@ import Image from "next/image";
 import logo from "../../../public/incard_logo.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import classes from "./page.module.css";
+import Link from "next/link";
 
 type FormData = {
   email: string;
@@ -53,13 +54,15 @@ export default function Login() {
         fontWeight: "200",
       }}
     >
-      <Image
-        src={logo}
-        alt="incard logo"
-        width={96}
-        height={26}
-        style={{ marginBottom: "4rem" }}
-      />
+      <Link href={"/"}>
+        <Image
+          src={logo}
+          alt="incard logo"
+          width={96}
+          height={26}
+          style={{ marginBottom: "4rem" }}
+        />
+      </Link>
       <h1 style={{ fontSize: "3.2rem", fontWeight: "500" }}>Hello!</h1>
       <h2
         style={{

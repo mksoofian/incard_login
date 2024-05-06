@@ -3,6 +3,7 @@ import Image from "next/image";
 import Nav from "./nav";
 import logo from "../../public/incard_logo.png";
 import React from "react";
+import Link from "next/link";
 
 export default function Header(props) {
   const { loggedIn } = props;
@@ -20,7 +21,10 @@ export default function Header(props) {
           width: "100%",
         }}
       >
-        <Image src={logo} alt="incard logo" width={132} height={36.17} />
+        <Link href="/">
+          {" "}
+          <Image src={logo} alt="incard logo" width={132} height={36.17} />
+        </Link>
         <Nav loggedIn={loggedIn} />
       </header>{" "}
     </div>

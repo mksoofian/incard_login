@@ -4,23 +4,6 @@ import Link from "next/link";
 export default function Nav(props) {
   const { loggedIn } = props;
   console.log(loggedIn);
-  const navLinks = [
-    {
-      name: "FAQ",
-      href: "/",
-      icon: null,
-    },
-    {
-      name: "Contact",
-      href: "/",
-      icon: null,
-    },
-    {
-      name: loggedIn ? "" : "Sign in",
-      href: "/login",
-      icon: null,
-    },
-  ];
 
   return (
     <div
@@ -31,19 +14,37 @@ export default function Nav(props) {
         gap: "2rem",
       }}
     >
-      {navLinks.map((link) => {
-        return (
-          <Link key={link.name} href={link.href} style={{ fontWeight: "300" }}>
-            <p>{link.name}</p>
-          </Link>
-        );
-      })}
+      <Link href={"/"} style={{ fontWeight: "300" }}>
+        <p>FAQ</p>
+      </Link>
 
-      <button>
-        <Link key="open_account" href="/">
-          Open an account
-        </Link>
-      </button>
+      <Link href={"/"} style={{ fontWeight: "300" }}>
+        <p>Contact</p>
+      </Link>
+      {loggedIn ? (
+        <button
+          onClick={() => {
+            localStorage.removeItem("login-info");
+          }}
+        >
+          {" "}
+          <Link href={"/"} style={{ fontWeight: "300" }}>
+            Log out
+          </Link>
+        </button>
+      ) : (
+        <>
+          <Link href={"/login"} style={{ fontWeight: "300" }}>
+            {" "}
+            Sign In
+          </Link>
+          <button>
+            <Link key="open_account" href="/">
+              Open an account
+            </Link>
+          </button>
+        </>
+      )}
     </div>
   );
 }
