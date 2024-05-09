@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Inter, Poppins, Roboto } from "next/font/google";
+import { Providers } from "./providers";
 
 //Imported Fonts
 const inter = Inter({
@@ -26,7 +27,9 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${inter.variable} ${poppins.variable} ${roboto.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

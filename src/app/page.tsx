@@ -1,24 +1,31 @@
 "use client";
+import Home from "../components/home";
 import Header from "../components/header";
-import Hero from "../components/hero";
-import React, { useEffect, useState } from "react";
+import { useAuthContext } from "../components/AuthContext";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default function Home() {
-  // Detects if user is logged in
-  const [isLoggedIn, setLoggedIn] = useState(false);
+function App() {
+  // Global State
+  const { isLoggedIn, setIsLoggedIn } = useAuthContext();
+  // Router for redirecting user if not logged in
+  const router = useRouter();
 
   // Load data from localStorage on initial render
   useEffect(() => {
-    const storedLogin = JSON.parse(localStorage.getItem("login-info"));
-    if (storedLogin) {
-      setLoggedIn(true);
+    const storedId = JSON.parse(localStorage.getItem("login-info"));
+    if (storedId) {
+      setIsLoggedIn(true);
+      console.log(`Still logged in...!`);
+      router.push("/dashboard"); //sends user to dashboard
     }
   }, []);
 
   return (
-    <div>
-      <Header loggedIn={isLoggedIn} />
-      <Hero />
-    </div>
+    <>
+      <Header />
+      <Home />
+    </>
   );
 }
+export default App;
