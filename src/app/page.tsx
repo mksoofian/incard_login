@@ -11,20 +11,13 @@ function App() {
   // Router for redirecting user if not logged in
   const router = useRouter();
 
-  // Load data from localStorage on initial render
-  useEffect(() => {
-    const storedId = JSON.parse(localStorage.getItem("login-info"));
-    if (storedId) {
-      setIsLoggedIn(true);
-      console.log(`Still logged in...!`);
-      router.push("/dashboard"); //sends user to dashboard
-    }
-  }, []);
-
   return (
     <>
       <Header />
-      <Home />
+      <div>
+        <Header />
+        <Hero />
+      </div>
     </>
   );
 }

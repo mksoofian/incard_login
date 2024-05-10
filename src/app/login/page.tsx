@@ -11,6 +11,7 @@ import Link from "next/link";
 type FormData = {
   user: string;
   password: string;
+  dan: boolean;
 };
 
 export default function Login() {
@@ -27,23 +28,37 @@ export default function Login() {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<FormData>();
 
   // Global State
-  const { isLoggedIn, setIsLoggedIn } = useAuthContext();
-  // Update effect to handle state changes
-  useEffect(() => {
-    console.log("isLoggedIn updated:", isLoggedIn); // Optional for debugging
-  }, [isLoggedIn]); // Dependency array: re-run on isLoggedIn change
+  const { setIsLoggedIn } = useAuthContext();
 
   //   Handle user form submission and store the info to local storage
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    if (data.user == loginInfo.user && data.password == loginInfo.password) {
+    if (data.user === loginInfo.user && data.password === loginInfo.password) {
+      const expiresTime = new Date(); // added 1 hour from now
+
+      localStorage.setItem("login-expires", expiresTime.toString()); // correct, add "userLoggedIn" to local storage
+
       //confirms if the credentials are correct
-      localStorage.setItem("login-info", JSON.stringify("userLoggedIn")); // correct, add "userLoggedIn" to local storage
       setIsLoggedIn(true); //Sets global state to true
       router.push("/dashboard"); // Routes user to dashboard
+    } else {
+      setError("user", { message: "Wrong email or password" });
+      // but what if the user or password is wrong?
+      // what if user is right and password wrong
+      // vice versa
+      // waht if they both wrong
+
+      // we dont have a user with that email
     }
+
+    // make API call
+
+    // error from BE
+
+    setError("root", { message: "Oops our servers our down" });
   };
 
   return (

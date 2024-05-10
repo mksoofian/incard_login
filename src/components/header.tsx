@@ -7,25 +7,24 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <div>
-      <header
-        style={{
-          padding: "3rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          position: "absolute",
-          top: "0",
-          width: "100%",
-          zIndex: "100",
-        }}
-      >
-        <Link href="/">
-          {" "}
-          <Image src={logo} alt="incard logo" width={132} height={36.17} />
-        </Link>
-        <Nav />
-      </header>{" "}
-    </div>
+    <header
+      style={{
+        padding: "3rem",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        position: "absolute",
+        color: "red",
+        top: "0",
+        width: "100%",
+        zIndex: "100",
+      }}
+    >
+      <Link href="/">
+        {" "}
+        <Image src={logo} alt="incard logo" width={132} height={36.17} />
+      </Link>
+      <Nav />
+    </header>
   );
 }
