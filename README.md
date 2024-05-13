@@ -19,19 +19,19 @@ Requirements:
 Updates recommended by mentor 5/10/24
 
 - [x] - Note above as checkboxes
-- [x]- fix hover and pointer on login button
-- [x]- update color to match incard's
-- [-]- don't mix and match styling of classNames and inLine. Choose 1 to avoid issues
-- [x]- add hover to nav links
-- [x]- move local storage checks and isLoggedIn checks to providers
-- [x]- move authContext to body of Providers. No need for the seperate component
-- [x]- remove extra div from the header
-- [x]- remove useEffect from nav
-- [x]- create handleLogout and move the logic from nav into a function in the Provider and to the AuthContext
-- [x]- move the logic of signIn and logOut into the return
-- [x]- move home into App
-- [x]- use === not ==
-- [x]- add useEffect to provider and move isLoggedIn logic from the onSubmit there
-- []- add protected routes & unprotected routes
+- [x] - fix hover and pointer on login button
+- [x] - update color to match incard's
+- [-] - don't mix and match styling of classNames and inLine. Choose 1 to avoid issues
+- [x] - add hover to nav links
+- [x] - move local storage checks and isLoggedIn checks to providers
+- [x] - move authContext to body of Providers. No need for the seperate component
+- [x] - remove extra div from the header
+- [x] - remove useEffect from nav
+- [x] - create handleLogout and move the logic from nav into a function in the Provider and to the AuthContext
+- [x] - move the logic of signIn and logOut into the return
+- [x] - move home into App
+- [x] - use === not ==
+- [x] - add useEffect to provider and move isLoggedIn logic from the onSubmit there
+- [] - add protected routes & unprotected routes
   // NOTES: Cannot figure out why refreshing page after logging in is setting state to false...?
-- [x]-add invalid/username password --> implement this error with setError from react-form
+- [x] -add invalid/username password --> implement this error with setError from react-form
