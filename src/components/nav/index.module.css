@@ -1,0 +1,14 @@
+.navContainer {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.link {
+  font-weight: 300;
+}
+.link:hover {
+  color: var(--primary-color);
+  opacity: 75%;
+}

@@ -1,0 +1,24 @@
+.heroContainer {
+  color: white;
+  font-size: 6.4rem;
+  text-align: center;
+  margin: 8rem 3rem 0 3rem;
+}
+.heroHeader1 {
+  font-size: inherit;
+  padding: 4rem 4.5rem 0;
+  margin-bottom: 2rem;
+}
+.heroHeader2 {
+  font-size: 2.1rem;
+  font-weight: 300;
+  padding: 0 4rem;
+  line-height: 1.5;
+}
+.highlightText {
+  color: var(--primary-color);
+  font-size: inherit;
+}
+.poppins {
+  font-family: var(--font-poppins);
+}
