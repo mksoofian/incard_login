@@ -2,7 +2,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createContext, useContext } from "react";
-import { useIdleTimer } from "../components/useIdleTimer";
+import { useIdleTimer } from "../utils/useIdleTimer";
 
 const protectedRoutes = ["/dashboard", "/admin", "/settings"];
 const unprotectedRoutes = ["/login", "/signup", "/home"];
@@ -42,26 +42,26 @@ export function AuthProvider({ children }) {
 
   //Updates on initial render
   useEffect(() => {
-    const storedId = localStorage.getItem("login-info");
+    const storedId = localStorage.getItem("expires-at");
     if (storedId) {
       setIsLoggedIn(true);
       console.log(isLoggedIn);
     }
   }, []);
 
+  // Keeps user out of protected routes
   useEffect(() => {
     if (isLoggedIn && unprotectedRoutes.includes(pathname)) {
       router.push("/dashboard");
       console.log(isLoggedIn);
     } else if (!isLoggedIn && protectedRoutes.includes(pathname)) {
       router.push("/login");
-      alert("You do not have permission to be here, please log in");
+      console.log("You do not have permission to be here, please log in");
       handleLogOut();
     }
   }, [isLoggedIn]);
 
   const handleLogOut = () => {
-    localStorage.removeItem("login-info"); //removes login info from local storage
     localStorage.removeItem("login-expires");
     setIsLoggedIn(false);
     console.log(isLoggedIn);
@@ -71,7 +71,9 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     if (isLoggedIn && idleTime === idleExpiresAt) {
       handleLogOut();
-      alert("Session expired, you have been logged out due to inactivity");
+      console.log(
+        "Session expired, you have been logged out due to inactivity"
+      );
       router.push("/home"); //sends user back to home page since they are no longer logged in
     }
   }, [idleTime]); // Execute every time the idle timer updates

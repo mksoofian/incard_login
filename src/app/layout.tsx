@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Inter, Poppins, Roboto } from "next/font/google";
 import { AuthProvider } from "./providers";
-import Header from "../components/header";
 
 //Imported Fonts
 const inter = Inter({
@@ -29,9 +28,7 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${poppins.variable} ${roboto.variable}`}
     >
       <body>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

@@ -7,7 +7,7 @@ import logo from "../../../public/incard_logo.png";
 import { useForm, SubmitHandler } from "react-hook-form";
 import classes from "./page.module.css";
 import Link from "next/link";
-import getSessionExpiresAt from "../../components/getSessionExpiresAt";
+import getSessionExpiresAt from "../../utils/getSessionExpiresAt";
 
 type FormData = {
   user: string;
@@ -36,22 +36,14 @@ export default function Login() {
 
   //   Handle user form submission and store the info to local storage
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    if (
-      (data.user === loginInfo.user && data.password !== loginInfo.password) ||
-      (data.user !== loginInfo.user && data.password === loginInfo.password) ||
-      (data.user !== loginInfo.user && data.password !== loginInfo.password)
-    ) {
+    if (data.user !== loginInfo.user || data.password !== loginInfo.password) {
       setError("user", {
         message: "username and password combination not valid",
       });
-    } else if (
-      data.user === loginInfo.user &&
-      data.password === loginInfo.password
-    ) {
+    } else {
       // if user credentials are correct
       const expiresTime = getSessionExpiresAt(60); //Sets session to expire in 60 minutes
       localStorage.setItem("login-expires", expiresTime.toString());
-      localStorage.setItem("login-info", JSON.stringify("userLoggedIn")); // add "userLoggedIn" to local storage
       setIsLoggedIn(true); //Sets global state to true
       router.push("/dashboard"); // Routes user to dashboard
     }

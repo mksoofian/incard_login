@@ -12,9 +12,9 @@ Requirements:
 - [x] - It should be functional e.g. login should take users to the home page - use 'incard' for username and password.
 - [x] - It should Handle errors e.g. if incorrect details were entered or session has expired.
 - [x] - The session should be persistent e.g. on page reload the user should not be taken back to the login page. If the session has expired then they should be redirected back to the login page.
-- [] - It would be nice to support SSR.
-- [] - Create 2-3 unit tests.
-- [] - Deploy the app to Netlify.
+- [ ] - It would be nice to support SSR.
+- [ ] - Create 2-3 unit tests.
+- [ ] - Deploy the app to Netlify.
 
 Updates recommended by mentor 5/10/24
 
@@ -32,6 +32,6 @@ Updates recommended by mentor 5/10/24
 - [x] - move home into App
 - [x] - use === not ==
 - [x] - add useEffect to provider and move isLoggedIn logic from the onSubmit there
-- [] - add protected routes & unprotected routes
-  // NOTES: Cannot figure out why refreshing page after logging in is setting state to false...?
+- [ ] - add protected routes & unprotected routes
+    // NOTES: Cannot figure out why refreshing page after logging in is setting state to false...?
 - [x] -add invalid/username password --> implement this error with setError from react-form
